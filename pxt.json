@@ -1,0 +1,31 @@
+{
+    "name": "หุ่นยนต์",
+    "description": "",
+    "dependencies": {
+        "core": "*",
+        "radio": "*",
+        "microphone": "*",
+        "pxt-MyRobotBit": "github:myrobotbit/pxt-myrobotbit#d567979c5756d9a7acabc51434322b29fa1c7515",
+        "pxt-MyServo": "github:myrobotbit/pxt-myservo#3835bc231b661fefbd232bf0d9a58a9ab0796a9e",
+        "PXT-MySensor": "github:myrobotbit/pxt-mysensor#104941cd706fd3922913c1529efdb447c3af099d",
+        "SSD1306_OLED": "github:tinkertanker/pxt-oled-ssd1306#v2.0.13",
+        "pxt-sonar": "github:microsoft/pxt-sonar#v0.0.5"
+    },
+    "files": [
+        "main.blocks",
+        "main.ts",
+        "README.md",
+        "main.py"
+    ],
+    "testFiles": [
+        "test.ts"
+    ],
+    "targetVersions": {
+        "target": "5.0.12",
+        "targetId": "microbit"
+    },
+    "supportedTargets": [
+        "microbit"
+    ],
+    "preferredEditor": "blocksprj"
+}
