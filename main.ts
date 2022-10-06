@@ -44,15 +44,24 @@ function Linefollow () {
     ค่าแสงP3 = 102
     while (Loop) {
         if (MySensor.analogRead(MySensor.analogPort.P0) > ค่าแสงP0 && MySensor.analogRead(MySensor.analogPort.P1) > ค่าแสงP1 && (MySensor.analogRead(MySensor.analogPort.P2) > ค่าแสงP2 && MySensor.analogRead(MySensor.analogPort.P3) > ค่าแสงP3)) {
-            MyRobotBit.TimePAUSE(150)
             MyRobotBit.MotorAB(motorDIR.Forward, 40, 40)
-        } else if (MySensor.analogRead(MySensor.analogPort.P2) > ค่าแสงP2 && MySensor.analogRead(MySensor.analogPort.P3) < ค่าแสงP3) {
-            MyRobotBit.Rotate(Turn.Left, 30, 80)
-        } else if (MySensor.analogRead(MySensor.analogPort.P2) < ค่าแสงP2 && MySensor.analogRead(MySensor.analogPort.P3) > ค่าแสงP3) {
+        } else if (MySensor.analogRead(MySensor.analogPort.P0) < ค่าแสงP0 && MySensor.analogRead(MySensor.analogPort.P1) > ค่าแสงP1 && (MySensor.analogRead(MySensor.analogPort.P2) > ค่าแสงP2 && MySensor.analogRead(MySensor.analogPort.P3) > ค่าแสงP3)) {
             MyRobotBit.Rotate(Turn.Right, 30, 80)
-        } else if (MySensor.analogRead(MySensor.analogPort.P0) < ค่าแสงP0 || MySensor.analogRead(MySensor.analogPort.P1) < ค่าแสงP1) {
-            Loop = false
-            MyRobotBit.motorOFF(motorSEL.M12, StopMode.Brake)
+        } else if (MySensor.analogRead(MySensor.analogPort.P0) > ค่าแสงP0 && MySensor.analogRead(MySensor.analogPort.P1) > ค่าแสงP1 && (MySensor.analogRead(MySensor.analogPort.P2) > ค่าแสงP2 && MySensor.analogRead(MySensor.analogPort.P3) < ค่าแสงP3)) {
+            MyRobotBit.Rotate(Turn.Left, 30, 80)
+        } else {
+            if (MySensor.analogRead(MySensor.analogPort.P0) > ค่าแสงP0 && MySensor.analogRead(MySensor.analogPort.P1) < ค่าแสงP1 || MySensor.analogRead(MySensor.analogPort.P2) < ค่าแสงP2 && MySensor.analogRead(MySensor.analogPort.P3) > ค่าแสงP3) {
+                Loop = false
+                MyRobotBit.motorOFF(motorSEL.M12, StopMode.Brake)
+            }
+            if (MySensor.analogRead(MySensor.analogPort.P0) < ค่าแสงP0 && MySensor.analogRead(MySensor.analogPort.P1) < ค่าแสงP1 || MySensor.analogRead(MySensor.analogPort.P2) < ค่าแสงP2 && MySensor.analogRead(MySensor.analogPort.P3) > ค่าแสงP3) {
+                Loop = false
+                MyRobotBit.motorOFF(motorSEL.M12, StopMode.Brake)
+            }
+            if (MySensor.analogRead(MySensor.analogPort.P0) > ค่าแสงP0 && MySensor.analogRead(MySensor.analogPort.P1) < ค่าแสงP1 || MySensor.analogRead(MySensor.analogPort.P2) < ค่าแสงP2 && MySensor.analogRead(MySensor.analogPort.P3) < ค่าแสงP3) {
+                Loop = false
+                MyRobotBit.motorOFF(motorSEL.M12, StopMode.Brake)
+            }
         }
     }
     MyRobotBit.motorOFF(motorSEL.M12, StopMode.Brake)
